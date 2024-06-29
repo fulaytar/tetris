@@ -106,7 +106,7 @@ function onKeyDown(event) {
   }
   if (event.key === 'ArrowDown') {
     tetromino.row += 1;
-    if (isOutSideGameboard(tetromino.row, tetromino.column)) {
+    if (!isValid()) {
       tetromino.row -= 1;
     }
   }
@@ -121,12 +121,20 @@ function draw() {
 
 // COLLISIONS
 
+function isValid() {
+  const matrixSize = tetromino.matrix.length;
+  for (let row = 0; row < matrixSize; row++) {
+    for (let column = 0; column < matrixSize; column++) {
+      if (isOutSideGameboard(row, column)) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
 function isOutSideGameboard(row, column) {
-  return (
-    column < 0 ||
-    column > tetrisColums - tetromino.matrix.length ||
-    row > tetrisRows - tetromino.matrix.length - 1
-  );
+  return tetromino.row + row >= tetrisRows;
 }
 
 //DRAW
@@ -168,4 +176,4 @@ let allBlockTetris = document.querySelectorAll('.tetris_block');
 genereteTetromino();
 draw();
 
-/* https://www.youtube.com/live/hGEPkXBKoBM  1^57 */
+/* https://www.youtube.com/watch?v=gl-qRlQIZc4 1^57 */
