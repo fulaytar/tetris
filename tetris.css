@@ -109,7 +109,10 @@ button:active .button_arrow {
     justify-content: center;
     padding-bottom: 30px;
   }
-
+  .arrow {
+    width: 40px;
+    height: 40px;
+  }
   .arrow.up {
     grid-area: up;
   }
