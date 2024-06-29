@@ -64,7 +64,7 @@ function genereteTetromino() {
   const nameTetro = randomFigure(tetroMino_Names);
   const matrix = tetroMinoes[nameTetro];
 
-  const columnTetro = 4;
+  const columnTetro = Math.floor(tetrisColums / 2 - matrix.length / 2);
   const rowTetro = 5;
 
   tetromino = {
@@ -108,6 +108,7 @@ function moveTetrominoDown() {
   tetromino.row += 1;
   if (!isValid()) {
     tetromino.row -= 1;
+    genereteNewTetromino();
   }
 }
 function moveTetrominoLeft() {
@@ -184,6 +185,19 @@ function drawPlayField() {
   }
 }
 
+function genereteNewTetromino() {
+  const tetrominoMatrixSize = tetromino.matrix.length;
+  for (let row = 0; row < tetrominoMatrixSize; row++) {
+    for (let column = 0; column < tetrominoMatrixSize; column++) {
+      if (tetromino.matrix[row][column]) {
+        playfield[tetromino.row + row][tetromino.column + column] =
+          tetromino.name;
+      }
+    }
+  }
+  genereteTetromino();
+}
+
 gerenetePlayField();
 
 let allBlockTetris = document.querySelectorAll('.tetris_block');
@@ -191,4 +205,4 @@ let allBlockTetris = document.querySelectorAll('.tetris_block');
 genereteTetromino();
 draw();
 
-/* https://www.youtube.com/watch?v=gl-qRlQIZc4 1^57 */
+/* https://www.youtube.com/watch?v=gl-qRlQIZc4 0:37 */
