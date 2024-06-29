@@ -93,24 +93,34 @@ document.addEventListener('keydown', onKeyDown);
 
 function onKeyDown(event) {
   if (event.key === 'ArrowLeft') {
-    tetromino.column -= 1;
-    if (!isValid()) {
-      tetromino.column += 1;
-    }
+    moveTetrominoLeft();
   }
   if (event.key === 'ArrowRight') {
-    tetromino.column += 1;
-    if (!isValid()) {
-      tetromino.column -= 1;
-    }
+    moveTetrominoRight();
   }
   if (event.key === 'ArrowDown') {
-    tetromino.row += 1;
-    if (!isValid()) {
-      tetromino.row -= 1;
-    }
+    moveTetrominoDown();
   }
   draw();
+}
+
+function moveTetrominoDown() {
+  tetromino.row += 1;
+  if (!isValid()) {
+    tetromino.row -= 1;
+  }
+}
+function moveTetrominoLeft() {
+  tetromino.column -= 1;
+  if (!isValid()) {
+    tetromino.column += 1;
+  }
+}
+function moveTetrominoRight() {
+  tetromino.column += 1;
+  if (!isValid()) {
+    tetromino.column -= 1;
+  }
 }
 
 function draw() {
@@ -135,9 +145,10 @@ function isValid() {
 
 function isOutSideGameboard(row, column) {
   return (
-    tetromino.row + row >= tetrisRows ||
-    tetromino.column + column < 0 ||
-    tetromino.column + column >= tetrisColums
+    tetromino.matrix[row][column] &&
+    (tetromino.row + row >= tetrisRows ||
+      tetromino.column + column < 0 ||
+      tetromino.column + column >= tetrisColums)
   );
 }
 
