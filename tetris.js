@@ -94,13 +94,13 @@ document.addEventListener('keydown', onKeyDown);
 function onKeyDown(event) {
   if (event.key === 'ArrowLeft') {
     tetromino.column -= 1;
-    if (isOutSideGameboard(tetromino.row, tetromino.column)) {
+    if (!isValid()) {
       tetromino.column += 1;
     }
   }
   if (event.key === 'ArrowRight') {
     tetromino.column += 1;
-    if (isOutSideGameboard(tetromino.row, tetromino.column)) {
+    if (!isValid()) {
       tetromino.column -= 1;
     }
   }
@@ -134,7 +134,11 @@ function isValid() {
 }
 
 function isOutSideGameboard(row, column) {
-  return tetromino.row + row >= tetrisRows;
+  return (
+    tetromino.row + row >= tetrisRows ||
+    tetromino.column + column < 0 ||
+    tetromino.column + column >= tetrisColums
+  );
 }
 
 //DRAW
