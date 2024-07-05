@@ -38,7 +38,7 @@ section {
   box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.4),
     /* Внутрішня тінь зверху */ inset 0 -2px 2px rgba(0, 0, 0, 0.3),
     /* Внутрішня тінь знизу */ 2px 0 3px rgba(0, 0, 0, 0.2),
-    /* Внутрішня тінь справа */-2px -2px 2px rgba(0, 0, 0, 0.2); /* Внутрішня тінь зліва */
+    /* Внутрішня тінь справа */-2px -2px 2px rgba(0, 0, 0, 0.2); /* Внутрішня тінь  зліва */
 }
 .tetris .O {
   background: red;
@@ -174,7 +174,7 @@ button:active .button_arrow {
 
 /* Медіа-запит для мобільних та планшетів */
 
-@media screen and (min-width: 340px) {
+@media screen and (min-width: 350px) {
   section {
     padding-left: 0;
     align-items: center;
