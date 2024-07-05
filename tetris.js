@@ -1,8 +1,9 @@
 const tetrisRows = 20;
 const tetrisColumns = 10;
 let playfield;
+let allBlockTetris;
 
-const tetroMino_Names = ['O', 'L', 'J', 'S', 'Z', 'I', 'T'];
+const tetroMino_Names = ['O', 'L', 'J', 'S', 'Z', 'I', 'T', 'B'];
 
 const tetroMinoes = {
   O: [
@@ -40,6 +41,7 @@ const tetroMinoes = {
     [0, 1, 0],
     [0, 0, 0],
   ],
+  B: [[1]],
 };
 
 let tetromino = {
@@ -50,6 +52,14 @@ let tetromino = {
 };
 
 //===========COMMON==================
+function init() {
+  generatePlayField();
+  allBlockTetris = document.querySelectorAll('.tetris li');
+  generateTetromino();
+  startLoop();
+  /* draw(); */
+}
+
 function convertPositionToIndex(row, column) {
   return row * tetrisColumns + column;
 }
@@ -244,9 +254,16 @@ function placeTetromino() {
   generateTetromino();
 }
 
-generatePlayField();
-let allBlockTetris = document.querySelectorAll('.tetris li');
-generateTetromino();
-draw();
+function moveDown() {
+  moveTetrominoDown();
+  draw();
+  startLoop();
+}
+
+function startLoop() {
+  setTimeout(() => requestAnimationFrame(moveDown), 500);
+}
+
+init();
 
 /* https://www.youtube.com/live/wMCZ7cPSlQ8  01:06 */
