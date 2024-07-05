@@ -156,19 +156,19 @@ button:active .button_arrow {
 
 @keyframes borderColorChange {
   0% {
-    border-image: linear-gradient(90deg, #333, #333) 1;
+    border-color: linear-gradient(90deg, #333, #333) 1;
   }
   25% {
-    border-image: linear-gradient(90deg, #f00, #ff0) 1;
+    border-color: linear-gradient(90deg, #f00, #ff0) 1;
   }
   50% {
-    border-image: linear-gradient(90deg, #0f0, #0ff) 1;
+    border-color: linear-gradient(90deg, #0f0, #0ff) 1;
   }
   75% {
-    border-image: linear-gradient(90deg, #00f, #f0f) 1;
+    border-color: linear-gradient(90deg, #00f, #f0f) 1;
   }
   100% {
-    border-image: linear-gradient(90deg, #333, #333) 1;
+    border-color: linear-gradient(90deg, #333, #333) 1;
   }
 }
 

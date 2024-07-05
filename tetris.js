@@ -2,6 +2,8 @@ const tetrisRows = 20;
 const tetrisColumns = 10;
 let playfield;
 let allBlockTetris;
+let isPaused = false;
+let timerID;
 
 const tetroMino_Names = ['O', 'L', 'J', 'S', 'Z', 'I', 'T', 'B'];
 
@@ -143,6 +145,10 @@ function draw() {
   drawTetromino();
 }
 
+function togglePaused() {
+  isPaused = !isPaused;
+}
+
 // =========COLLISIONS==========
 function isValid() {
   const matrixSize = tetromino.matrix.length;
@@ -261,9 +267,15 @@ function moveDown() {
 }
 
 function startLoop() {
-  setTimeout(() => requestAnimationFrame(moveDown), 500);
+  timerID = setTimeout(() => requestAnimationFrame(moveDown), 500);
+}
+
+function stopLoop() {
+  clearTimeout(timerID);
+
+  timerID = null;
 }
 
 init();
 
-/* https://www.youtube.com/live/wMCZ7cPSlQ8  01:06 */
+/* https://www.youtube.com/watch?v=QWJAlUOMx4Y 15^00 */
