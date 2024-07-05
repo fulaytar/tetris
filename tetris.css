@@ -27,7 +27,7 @@ section {
   grid-template-columns: repeat(10, auto);
 }
 
-.tetris_block {
+.tetris li {
   height: min(4vh, 7vw);
   width: min(4vh, 7vw);
   background: rgba(0, 0, 0, 0.4);
@@ -37,31 +37,31 @@ section {
     /* Внутрішня тінь знизу */ inset 2px 0 3px rgba(0, 0, 0, 0.2),
     /* Внутрішня тінь справа */-6px -3px 3px rgba(0, 0, 0, 0.2); /* Внутрішня тінь зліва */
 }
-.tetris_block.O {
+.tetris .O {
   background: red;
 }
 
-.tetris_block.L {
+.tetris .L {
   background: rgb(16 255 16);
 }
 
-.tetris_block.J {
+.tetris .J {
   background: rgb(255 4 255);
 }
 
-.tetris_block.T {
+.tetris .T {
   background: #0275f8;
 }
 
-.tetris_block.I {
+.tetris .I {
   background: yellow;
 }
 
-.tetris_block.S {
+.tetris .S {
   background: aqua;
 }
 
-.tetris_block.Z {
+.tetris .Z {
   background: rgb(255, 136, 0);
 }
 button {
