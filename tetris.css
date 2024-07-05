@@ -134,7 +134,7 @@ button:active .button_arrow {
 }
 
 /* Медіа-запит для великих екранів */
-@media (min-width: 1025px) {
+@media screen and (min-width: 1025px) {
   .btn_mobile {
     display: none;
   }
