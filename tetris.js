@@ -249,4 +249,4 @@ let allBlockTetris = document.querySelectorAll('.tetris li');
 generateTetromino();
 draw();
 
-/* https://www.youtube.com/live/wMCZ7cPSlQ8  47^17 */
+/* https://www.youtube.com/live/wMCZ7cPSlQ8  01:06 */
