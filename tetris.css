@@ -8,12 +8,13 @@ ul {
 }
 body {
   background: linear-gradient(135deg, #1f1c2c, #928dab);
-  height: 100vh;
 }
 section {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 10px;
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -34,34 +35,34 @@ section {
   box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.4),
     /* Внутрішня тінь зверху */ inset 0 -2px 3px rgba(0, 0, 0, 0.3),
     /* Внутрішня тінь знизу */ inset 2px 0 3px rgba(0, 0, 0, 0.2),
-    /* Внутрішня тінь справа */ inset -2px 0 3px rgba(0, 0, 0, 0.2); /* Внутрішня тінь зліва */
+    /* Внутрішня тінь справа */-6px -3px 3px rgba(0, 0, 0, 0.2); /* Внутрішня тінь зліва */
 }
 .tetris_block.O {
-  background: linear-gradient(to bottom right, red, darkred);
+  background: red;
 }
 
 .tetris_block.L {
-  background: linear-gradient(to bottom right, rgb(16 255 16), darkgreen);
+  background: rgb(16 255 16);
 }
 
 .tetris_block.J {
-  background: linear-gradient(to bottom right, rgb(255 4 255), darkmagenta);
+  background: rgb(255 4 255);
 }
 
 .tetris_block.T {
-  background: linear-gradient(to bottom right, #0275f8, darkblue);
+  background: #0275f8;
 }
 
 .tetris_block.I {
-  background: linear-gradient(to bottom right, yellow, goldenrod);
+  background: yellow;
 }
 
 .tetris_block.S {
-  background: linear-gradient(to bottom right, aqua, teal);
+  background: aqua;
 }
 
 .tetris_block.Z {
-  background: linear-gradient(to bottom right, brown, darkbrown);
+  background: rgb(255, 136, 0);
 }
 button {
   --button_radius: 0.75em;
