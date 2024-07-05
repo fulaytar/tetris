@@ -7,13 +7,15 @@ ul {
   list-style-type: none;
 }
 body {
+  position: relative;
   background: linear-gradient(135deg, #1f1c2c, #928dab);
 }
 section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding-left: 30px;
 
   gap: 15px;
   padding-top: 20px;
@@ -99,8 +101,101 @@ button:active .button_arrow {
   transform: translateY(0);
 }
 
+.game-over-container {
+  display: flex;
+  text-align: center;
+  gap: 10px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  right: 3%;
+  transform: translate(-50%, -50%);
+}
+
+.score {
+  width: 20px;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.breakable {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.game-over {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #ff4b5c;
+  animation: blink 1s infinite;
+  /* display: none; */
+}
+.btn_mobile {
+  padding-left: 30px;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes borderColorChange {
+  0% {
+    border-image: linear-gradient(90deg, #333, #333) 1;
+  }
+  25% {
+    border-image: linear-gradient(90deg, #f00, #ff0) 1;
+  }
+  50% {
+    border-image: linear-gradient(90deg, #0f0, #0ff) 1;
+  }
+  75% {
+    border-image: linear-gradient(90deg, #00f, #f0f) 1;
+  }
+  100% {
+    border-image: linear-gradient(90deg, #333, #333) 1;
+  }
+}
+
 /* Медіа-запит для мобільних та планшетів */
-@media (max-width: 1024px) {
+
+@media screen and (min-width: 340px) {
+  section {
+    padding-left: 0;
+    align-items: center;
+  }
+  .btn_mobile {
+    padding-left: 0;
+  }
+}
+@media screen and (min-width: 500px) {
+  .game-over-container {
+    right: 10%;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .game-over-container {
+    display: block;
+    right: 15%;
+  }
+  .breakable {
+    display: inline;
+  }
+}
+@media screen and (max-width: 1024px) {
   .btn_mobile {
     display: grid;
     grid-template-columns: repeat(3, minmax(30px, 50px));
@@ -146,23 +241,5 @@ button:active .button_arrow {
 @media screen and (min-width: 1024px) {
   .tetris_block:hover {
     animation: borderColorChange 5s infinite;
-  }
-}
-
-@keyframes borderColorChange {
-  0% {
-    border-image: linear-gradient(90deg, #333, #333) 1;
-  }
-  25% {
-    border-image: linear-gradient(90deg, #f00, #ff0) 1;
-  }
-  50% {
-    border-image: linear-gradient(90deg, #0f0, #0ff) 1;
-  }
-  75% {
-    border-image: linear-gradient(90deg, #00f, #f0f) 1;
-  }
-  100% {
-    border-image: linear-gradient(90deg, #333, #333) 1;
   }
 }

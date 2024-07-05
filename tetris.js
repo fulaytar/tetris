@@ -65,7 +65,7 @@ function generateTetromino() {
   const matrix = tetroMinoes[nameTetro];
 
   const columnTetro = Math.floor(tetrisColumns / 2 - matrix.length / 2);
-  const rowTetro = 5;
+  const rowTetro = -2;
 
   tetromino = {
     name: nameTetro,
@@ -149,6 +149,10 @@ function isValid() {
   return true;
 }
 
+function isOutsideOfTopGameBoard(row) {
+  return tetromino.row + row < 0;
+}
+
 function isOutsideOfGameboard(row, column) {
   return (
     tetromino.matrix[row][column] &&
@@ -199,6 +203,9 @@ function drawTetromino() {
 
   for (let row = 0; row < tetrominoMatrixSize; row++) {
     for (let column = 0; column < tetrominoMatrixSize; column++) {
+      if (isOutsideOfTopGameBoard(row)) {
+        continue;
+      }
       if (!tetromino.matrix[row][column]) {
         continue;
       }
