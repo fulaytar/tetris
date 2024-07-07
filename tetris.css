@@ -137,14 +137,14 @@ button {
   color: var(--button_outline_color);
   transition: transform 0.1s ease;
 }
-
+/* 
 button:hover .button_arrow {
   transform: translateY(-0.33em);
 }
 
 button:active .button_arrow {
   transform: translateY(0);
-}
+} */
 
 .overlay {
   position: fixed;
