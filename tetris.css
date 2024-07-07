@@ -104,6 +104,46 @@ button:active .button_arrow {
   transform: translateY(0);
 }
 
+.overlay {
+  position: fixed;
+  background: rgb(62, 0, 139, 0.5);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.pause_overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  background: transparent;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.pause_active {
+  color: #fff;
+  font-size: 3rem; /* Великий шрифт для повідомлення */
+  font-weight: bold;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Тінь для тексту */
+  padding: 15px;
+  border-radius: 10px;
+  background: linear-gradient(
+    135deg,
+    #6e8efb,
+    #a777e3
+  ); /* Градієнтний фон для тексту */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Тінь для блоку */
+  animation: pulse 1.5s infinite; /* Анімація для тексту */
+}
+
 .game-over-container {
   display: flex;
   text-align: center;
@@ -231,13 +271,55 @@ button:active .button_arrow {
   }
 }
 
+.result_end_info {
+  background-color: #fff; /* білий фон для блоку з результатами */
+  padding: 20px;
+  border-radius: 10px; /* закруглені кути */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* тінь для блоку */
+  text-align: center;
+  color: #333; /* темний колір тексту */
+}
+
+.result_title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #ff4444; /* червоний колір для заголовка */
+}
+
+.result_end_score,
+.result_max_score {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.result_end_game,
+.max_score {
+  font-weight: bold;
+  color: #4caf50; /* зелений колір для результату */
+}
+
+.result_restart_game {
+  padding: 10px 20px;
+  background-color: #007bff; /* синій колір кнопки */
+  color: #fff; /* білий колір тексту на кнопці */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.result_restart_game:hover {
+  background-color: #0056b3; /* темніший синій при наведенні */
+}
+
 /* Медіа-запит для великих екранів */
 @media screen and (min-width: 1025px) {
   .btn_mobile {
     display: none;
   }
-  section {
-    height: 100vh;
+  body {
+    min-height: 100vh;
   }
 }
 
