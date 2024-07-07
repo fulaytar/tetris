@@ -300,7 +300,41 @@ function placeTetromino() {
       }
     }
   }
+  let filledRows = findFilledRows();
+  //console.log(filledRows);
+  removeFillRow(filledRows);
   generateTetromino();
+}
+
+function findFilledRows() {
+  const fillRows = [];
+
+  for (let row = 0; row < tetrisRows; row++) {
+    let filledColumns = 0;
+    for (let column = 0; column < tetrisColumns; column++) {
+      if (playfield[row][column] !== 0) {
+        filledColumns++;
+      }
+    }
+    if (tetrisColumns === filledColumns) {
+      fillRows.push(row);
+    }
+  }
+  return fillRows;
+}
+
+function removeFillRow(filledRow) {
+  for (let i = 0; i < filledRow.length; i++) {
+    const row = filledRow[i];
+    dropRowsAbove(row);
+  }
+}
+
+function dropRowsAbove(rowDelete) {
+  for (let row = rowDelete; row > 0; row--) {
+    playfield[row] = playfield[row - 1];
+  }
+  playfield[0] = new Array(tetrisColumns).fill(0);
 }
 
 function moveDown() {
