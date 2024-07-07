@@ -421,5 +421,3 @@ function stopLoop() {
 }
 
 init();
-
-/* https://www.youtube.com/watch?v=QWJAlUOMx4Y 15^00 */
