@@ -411,9 +411,7 @@ function moveDown() {
 }
 
 function startLoop() {
-  const currentSpeed = 550 - addSpeed;
-  console.log(currentSpeed);
-  timerID = setTimeout(() => requestAnimationFrame(moveDown), currentSpeed);
+  timerID = setTimeout(() => requestAnimationFrame(moveDown), 550 - addSpeed);
 }
 
 function stopLoop() {
