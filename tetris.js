@@ -17,6 +17,7 @@ const max_score = document.querySelector('.max_score');
 const current_lvl = document.querySelector('#current_lvl');
 const start_game = document.querySelector('.start_game');
 const start_game_overlay = document.querySelector('.start_game_overlay');
+let openStartBlock = true;
 let addSpeed = 0;
 let score = 0;
 const lastMaxResult = parseInt(localStorage.getItem('max-result')) || 0;
@@ -27,6 +28,7 @@ pause_active.addEventListener('click', togglePaused);
 start_game.addEventListener('click', () => {
   init();
   start_game_overlay.style.display = 'none';
+  openStartBlock = false;
 });
 
 const tetroMino_Names = ['O', 'L', 'J', 'S', 'Z', 'I', 'T', 'B'];
@@ -148,6 +150,9 @@ function generatePlayField() {
 document.addEventListener('keydown', onKeyDown);
 
 function onKeyDown(event) {
+  if (openStartBlock) {
+    return;
+  }
   if (event.key === 'Escape') {
     togglePaused();
   }
