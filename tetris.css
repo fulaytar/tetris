@@ -14,12 +14,50 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  padding-left: 30px;
-
+  align-items: center;
   gap: 15px;
-  padding-top: 20px;
   padding-bottom: 20px;
+}
+header {
+  padding: 5px 10px;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+.info_game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: #ecf0f1; /* Світлий текст */
+  font-size: 1rem; /* Зменшений розмір шрифту */
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Легка тінь для тексту */
+}
+
+.info_game p {
+  padding: 5px 10px; /* Менші відступи для елементів */
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Тінь для елементів */
+  transition: transform 0.2s, background 0.2s;
+}
+
+.info_game p:hover {
+  background: linear-gradient(
+    135deg,
+    #16a085,
+    #1abc9c
+  ); /* Зміна фону при наведенні */
 }
 
 .tetris {
@@ -82,7 +120,9 @@ button {
   padding: 0;
   margin: 0;
 }
-
+.pause_active {
+  cursor: pointer;
+}
 .button_arrow {
   display: flex;
   align-items: center;
@@ -106,20 +146,18 @@ button:active .button_arrow {
 
 .overlay {
   position: fixed;
-  background: rgb(62, 0, 139, 0.5);
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .pause_overlay {
-  background-color: rgba(0, 0, 0, 0.7);
+  background: rgba(62, 0, 139, 0.5);
   position: fixed;
-  background: transparent;
   top: 0;
   left: 0;
   width: 100%;
@@ -155,35 +193,6 @@ button:active .button_arrow {
   transform: translate(-50%, -50%);
 }
 
-.score {
-  width: 20px;
-  font-size: 1.2em;
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.breakable {
-  display: inline-block;
-  margin-bottom: 5px;
-}
-
-.game-over {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-wrap: wrap;
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #ff4b5c;
-  animation: blink 1s infinite;
-  /* display: none; */
-}
-.btn_mobile {
-  padding-left: 30px;
-}
-
 @keyframes blink {
   0%,
   100% {
@@ -191,24 +200,6 @@ button:active .button_arrow {
   }
   50% {
     opacity: 0.5;
-  }
-}
-
-@keyframes borderColorChange {
-  0% {
-    border-color: linear-gradient(90deg, #333, #333) 1;
-  }
-  25% {
-    border-color: linear-gradient(90deg, #f00, #ff0) 1;
-  }
-  50% {
-    border-color: linear-gradient(90deg, #0f0, #0ff) 1;
-  }
-  75% {
-    border-color: linear-gradient(90deg, #00f, #f0f) 1;
-  }
-  100% {
-    border-color: linear-gradient(90deg, #333, #333) 1;
   }
 }
 

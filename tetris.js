@@ -8,7 +8,16 @@ let isGameOver = false;
 const overlay = document.querySelector('.overlay');
 const btn_restart = document.querySelector('.result_restart_game');
 const pauseOverlay = document.querySelector('.pause_overlay');
+const currentScore = document.querySelector('#current_count');
+const currentLvl = document.querySelector('#current_lvl');
+const pauseGame = document.querySelector('#pause_game');
+const pause_active = document.querySelector('.pause_active');
+const result_end_game = document.querySelector('.result_end_game');
+const max_score = document.querySelector('.max_score');
 let score = 0;
+
+pauseGame.addEventListener('click', togglePaused);
+pause_active.addEventListener('click', togglePaused);
 
 const tetroMino_Names = ['O', 'L', 'J', 'S', 'Z', 'I', 'T', 'B'];
 
@@ -60,6 +69,9 @@ let tetromino = {
 
 //===========COMMON==================
 function init() {
+  score = 0;
+  result_end_game.innerHTML = 0;
+  currentScore.innerHTML = 0;
   isGameOver = false;
   generatePlayField();
   allBlockTetris = document.querySelectorAll('.tetris li');
@@ -79,7 +91,7 @@ function randomFigure(array) {
 
 btn_restart.addEventListener('click', () => {
   document.querySelector('.tetris').innerHTML = '';
-  overlay.style.display = 'none';
+  overlay.classList.add('visually-hidden');
 
   init();
 });
@@ -284,6 +296,26 @@ function drawPlayField() {
     }
   }
 }
+function countScore(destroyRows) {
+  if (destroyRows === 0) {
+    return;
+  }
+
+  score += 10 * destroyRows;
+  localStorage.setItem('max-result', score);
+  currentScore.innerHTML = score;
+
+  const lastMaxResult = JSON.parse(localStorage.getItem('max-result')) || 0;
+
+  if (lastMaxResult >= score) {
+    max_score.innerHTML = lastMaxResult;
+  } else {
+    max_score.innerHTML = score;
+    localStorage.setItem('max-result', score);
+  }
+
+  result_end_game.innerHTML = score;
+}
 
 function placeTetromino() {
   const tetrominoMatrixSize = tetromino.matrix.length;
@@ -291,7 +323,7 @@ function placeTetromino() {
     for (let column = 0; column < tetrominoMatrixSize; column++) {
       if (isOutsideOfTopGameBoard(row)) {
         isGameOver = true;
-        overlay.style.display = 'flex';
+        overlay.classList.remove('visually-hidden');
         return;
       }
       if (tetromino.matrix[row][column]) {
@@ -303,6 +335,8 @@ function placeTetromino() {
   let filledRows = findFilledRows();
   //console.log(filledRows);
   removeFillRow(filledRows);
+
+  countScore(filledRows.length);
   generateTetromino();
 }
 
