@@ -15,12 +15,19 @@ const pause_active = document.querySelector('.pause_active');
 const result_end_game = document.querySelector('.result_end_game');
 const max_score = document.querySelector('.max_score');
 const current_lvl = document.querySelector('#current_lvl');
+const start_game = document.querySelector('.start_game');
+const start_game_overlay = document.querySelector('.start_game_overlay');
 let addSpeed = 0;
 let score = 0;
 const lastMaxResult = parseInt(localStorage.getItem('max-result')) || 0;
 
 pauseGame.addEventListener('click', togglePaused);
 pause_active.addEventListener('click', togglePaused);
+
+start_game.addEventListener('click', () => {
+  init();
+  start_game_overlay.style.display = 'none';
+});
 
 const tetroMino_Names = ['O', 'L', 'J', 'S', 'Z', 'I', 'T', 'B'];
 
@@ -70,19 +77,9 @@ let tetromino = {
   row: 0,
 };
 
-//========Safari zoom=====
-document.addEventListener(
-  'touchmove',
-  function (event) {
-    event = event.originalEvent || event;
-    if (event.scale !== 1) {
-      event.preventDefault();
-    }
-  },
-  false
-);
 //===========COMMON==================
 function init() {
+  document.querySelector('.tetris').innerHTML = '';
   score = 0;
   result_end_game.innerHTML = 0;
   currentScore.innerHTML = 0;
@@ -430,5 +427,3 @@ function stopLoop() {
 
   timerID = null;
 }
-
-init();
