@@ -43,7 +43,9 @@ header {
   font-weight: bold;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Легка тінь для тексту */
 }
-
+#pause_game {
+  cursor: pointer;
+}
 .info_game p {
   padding: 5px 10px; /* Менші відступи для елементів */
   border-radius: 5px;

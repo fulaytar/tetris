@@ -14,7 +14,10 @@ const pauseGame = document.querySelector('#pause_game');
 const pause_active = document.querySelector('.pause_active');
 const result_end_game = document.querySelector('.result_end_game');
 const max_score = document.querySelector('.max_score');
+const current_lvl = document.querySelector('#current_lvl');
+let addSpeed = 0;
 let score = 0;
+const lastMaxResult = parseInt(localStorage.getItem('max-result')) || 0;
 
 pauseGame.addEventListener('click', togglePaused);
 pause_active.addEventListener('click', togglePaused);
@@ -78,6 +81,16 @@ function init() {
   generateTetromino();
   startLoop();
   /* draw(); */
+}
+
+function updateLastMaxResult() {
+  const lastMaxResult = parseInt(localStorage.getItem('max-result')) || 0;
+  if (lastMaxResult >= score) {
+    max_score.innerHTML = lastMaxResult;
+  } else {
+    max_score.innerHTML = score;
+    localStorage.setItem('max-result', score);
+  }
 }
 
 function convertPositionToIndex(row, column) {
@@ -300,20 +313,38 @@ function countScore(destroyRows) {
   if (destroyRows === 0) {
     return;
   }
-
-  score += 10 * destroyRows;
-  localStorage.setItem('max-result', score);
-  currentScore.innerHTML = score;
-
-  const lastMaxResult = JSON.parse(localStorage.getItem('max-result')) || 0;
-
-  if (lastMaxResult >= score) {
-    max_score.innerHTML = lastMaxResult;
-  } else {
-    max_score.innerHTML = score;
-    localStorage.setItem('max-result', score);
+  if (score >= 450) {
+    addSpeed = 450; //100мс
+    current_lvl.innerHTML = 'max'; // Установка максимальної швидкості
+  } else if (score >= 400 && score < 450) {
+    addSpeed = 400; //150мс
+    current_lvl.innerHTML = 9; // Установка рівня 9
+  } else if (score >= 350 && score < 400) {
+    addSpeed = 350; //200мс
+    current_lvl.innerHTML = 8; // Установка рівня 8
+  } else if (score >= 300 && score < 350) {
+    addSpeed = 300;
+    current_lvl.innerHTML = 7; // Установка рівня 7
+  } else if (score >= 250 && score < 300) {
+    addSpeed = 250;
+    current_lvl.innerHTML = 6; // Установка рівня 6
+  } else if (score >= 200 && score < 250) {
+    addSpeed = 200;
+    current_lvl.innerHTML = 5; // Установка рівня 5
+  } else if (score >= 150 && score < 200) {
+    addSpeed = 150;
+    current_lvl.innerHTML = 4; // Установка рівня 4
+  } else if (score >= 100 && score < 150) {
+    addSpeed = 100;
+    current_lvl.innerHTML = 3; // Установка рівня 3
+  } else if (score >= 50 && score < 100) {
+    addSpeed = 50;
+    current_lvl.innerHTML = 2; // Установка рівня 2
   }
 
+  score += 10 * destroyRows;
+  currentScore.innerHTML = score;
+  updateLastMaxResult(); // Оновлення lastMaxResult при зміні score
   result_end_game.innerHTML = score;
 }
 
@@ -322,6 +353,7 @@ function placeTetromino() {
   for (let row = 0; row < tetrominoMatrixSize; row++) {
     for (let column = 0; column < tetrominoMatrixSize; column++) {
       if (isOutsideOfTopGameBoard(row)) {
+        updateLastMaxResult(); // Оновлення lastMaxResult при зміні score
         isGameOver = true;
         overlay.classList.remove('visually-hidden');
         return;
@@ -379,7 +411,9 @@ function moveDown() {
 }
 
 function startLoop() {
-  timerID = setTimeout(() => requestAnimationFrame(moveDown), 500);
+  const currentSpeed = 550 - addSpeed;
+  console.log(currentSpeed);
+  timerID = setTimeout(() => requestAnimationFrame(moveDown), currentSpeed);
 }
 
 function stopLoop() {
