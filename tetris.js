@@ -102,6 +102,7 @@ function init() {
   document.querySelector('.tetris').innerHTML = '';
   score = 0;
   result_end_game.innerHTML = 0;
+  current_lvl.innerHTML = 1;
   currentScore.innerHTML = 0;
   isGameOver = false;
   generatePlayField();
