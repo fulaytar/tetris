@@ -33,6 +33,7 @@ pause_active.addEventListener('click', togglePaused);
 start_game.addEventListener(
   'click',
   () => {
+    start_game.innerHTML = timeSecondToStart;
     const timeToGame = setInterval(() => {
       timeSecondToStart -= 1;
       start_game.innerHTML = timeSecondToStart;
