@@ -1,3 +1,4 @@
+/* ============BASE========== */
 * {
   padding: 0;
   margin: 0;
@@ -5,6 +6,9 @@
 }
 :root {
   --green: #1bfd9c;
+  --button_radius: 0.75em;
+  --button_color: #e8e8e8;
+  --button_outline_color: #000000;
 }
 ul {
   list-style-type: none;
@@ -36,6 +40,8 @@ header {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+/* ============iNFO GAME========== */
 .info_game {
   display: flex;
   justify-content: center;
@@ -64,7 +70,7 @@ header {
     #1abc9c
   ); /* Зміна фону при наведенні */
 }
-
+/* ============STYLE TETRIS========== */
 .tetris {
   border: 4px solid #333;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4),
@@ -113,10 +119,9 @@ header {
 .tetris .B {
   background: #8a2be2;
 }
+
+/* ============BUTTON MOBILE AND TABLET ========= */
 button {
-  --button_radius: 0.75em;
-  --button_color: #e8e8e8;
-  --button_outline_color: #000000;
   font-size: 17px;
   font-weight: bold;
   border: none;
@@ -140,15 +145,8 @@ button {
   color: var(--button_outline_color);
   transition: transform 0.1s ease;
 }
-/* 
-button:hover .button_arrow {
-  transform: translateY(-0.33em);
-}
 
-button:active .button_arrow {
-  transform: translateY(0);
-} */
-
+/* ============ALL OVERLAY========= */
 .overlay {
   position: fixed;
   top: 50%;
@@ -174,6 +172,8 @@ button:active .button_arrow {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* ============BUTTON START ========= */
 .start_game {
   font-size: 15px;
   padding: 0.7em 2.7em;
@@ -240,7 +240,7 @@ button:active .button_arrow {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Тінь для блоку */
   animation: pulse 1.5s infinite; /* Анімація для тексту */
 }
-
+/* ============GAME OVER CONTAINER ========= */
 .game-over-container {
   display: flex;
   text-align: center;
@@ -262,64 +262,6 @@ button:active .button_arrow {
   }
 }
 
-/* Медіа-запит для мобільних та планшетів */
-
-@media screen and (min-width: 350px) {
-  section {
-    padding-left: 0;
-    align-items: center;
-  }
-  .btn_mobile {
-    padding-left: 0;
-  }
-}
-@media screen and (min-width: 500px) {
-  .game-over-container {
-    right: 10%;
-  }
-}
-
-@media screen and (min-width: 800px) {
-  .game-over-container {
-    display: block;
-    right: 15%;
-  }
-  .breakable {
-    display: inline;
-  }
-}
-@media screen and (max-width: 1024px) {
-  .btn_mobile {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(30px, 50px));
-    grid-template-areas:
-      '. up .'
-      'left down right';
-    align-items: center;
-    gap: 5px;
-    justify-content: center;
-    padding-bottom: 30px;
-  }
-  .arrow {
-    width: 50px;
-    height: 50px;
-  }
-  .arrow.up {
-    grid-area: up;
-  }
-
-  .arrow.down {
-    grid-area: down;
-  }
-
-  .arrow.left {
-    grid-area: left;
-  }
-
-  .arrow.right {
-    grid-area: right;
-  }
-}
 .result_end_info {
   background: #1e1e1e;
   color: #f1f1f1;
@@ -428,11 +370,66 @@ button:active .button_arrow {
     transparent 100%
   );
 }
-/.result_restart_game:hover:before {
+.result_restart_game:hover:before {
   transform: translateX(15em);
 }
 
-/* Медіа-запит для великих екранів */
+/* ============ALL MEDIA SCREENS========= */
+
+@media screen and (min-width: 350px) {
+  section {
+    padding-left: 0;
+    align-items: center;
+  }
+  .btn_mobile {
+    padding-left: 0;
+  }
+}
+@media screen and (min-width: 500px) {
+  .game-over-container {
+    right: 10%;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .game-over-container {
+    display: block;
+    right: 15%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .btn_mobile {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(30px, 50px));
+    grid-template-areas:
+      '. up .'
+      'left down right';
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+    padding-bottom: 30px;
+  }
+  .arrow {
+    width: 50px;
+    height: 50px;
+  }
+  .arrow.up {
+    grid-area: up;
+  }
+
+  .arrow.down {
+    grid-area: down;
+  }
+
+  .arrow.left {
+    grid-area: left;
+  }
+
+  .arrow.right {
+    grid-area: right;
+  }
+}
+
 @media screen and (min-width: 1025px) {
   .btn_mobile {
     display: none;
