@@ -188,7 +188,7 @@ button {
 .start_game_overlay {
   background: transparent;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -506,4 +506,7 @@ button {
   .tetris_block:hover {
     animation: borderColorChange 5s infinite;
   }
+  .start_game_overlay {
+  top: 50%;
+}
 }
