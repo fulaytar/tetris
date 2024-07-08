@@ -20,7 +20,7 @@ const start_game_overlay = document.querySelector('.start_game_overlay');
 let openStartBlock = true;
 let addSpeed = 0;
 let score = 0;
-let timeSecondToStart = 4;
+let timeSecondToStart = 3;
 const lastMaxResult = parseInt(localStorage.getItem('max-result')) || 0;
 
 pauseGame.addEventListener('click', () => {
