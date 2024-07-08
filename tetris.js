@@ -179,16 +179,16 @@ function onKeyDown(event) {
       event.preventDefault();
       dropTetrominoDown();
     }
-    if (event.key === 'ArrowUp') {
+    if (event.key === 'ArrowUp' || event.key === 'w' || event.key === 'W') {
       rotate();
     }
-    if (event.key === 'ArrowLeft') {
+    if (event.key === 'ArrowLeft' || event.key === 'a' || event.key === 'A') {
       moveTetrominoLeft();
     }
-    if (event.key === 'ArrowRight') {
+    if (event.key === 'ArrowRight' || event.key === 'd' || event.key === 'D') {
       moveTetrominoRight();
     }
-    if (event.key === 'ArrowDown') {
+    if (event.key === 'ArrowDown' || event.key === 's' || event.key === 'S') {
       event.preventDefault();
       moveTetrominoDown();
     }
