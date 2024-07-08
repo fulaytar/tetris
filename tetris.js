@@ -20,16 +20,33 @@ const start_game_overlay = document.querySelector('.start_game_overlay');
 let openStartBlock = true;
 let addSpeed = 0;
 let score = 0;
+let timeSecondToStart = 4;
 const lastMaxResult = parseInt(localStorage.getItem('max-result')) || 0;
 
-pauseGame.addEventListener('click', togglePaused);
+pauseGame.addEventListener('click', () => {
+  if (!openStartBlock) {
+    togglePaused();
+  }
+});
 pause_active.addEventListener('click', togglePaused);
 
-start_game.addEventListener('click', () => {
-  init();
-  start_game_overlay.style.display = 'none';
-  openStartBlock = false;
-});
+start_game.addEventListener(
+  'click',
+  () => {
+    const timeToGame = setInterval(() => {
+      timeSecondToStart -= 1;
+      start_game.innerHTML = timeSecondToStart;
+
+      if (timeSecondToStart === 0) {
+        clearInterval(timeToGame);
+        init();
+        start_game_overlay.style.display = 'none';
+        openStartBlock = false;
+      }
+    }, 1000);
+  },
+  { once: true }
+);
 
 const tetroMino_Names = ['O', 'L', 'J', 'S', 'Z', 'I', 'T', 'B'];
 

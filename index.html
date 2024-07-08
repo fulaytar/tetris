@@ -6,6 +6,7 @@
     <meta name="description" content="Play Tetris online - the classic arcade game that sharpens your reaction and strategic thinking. Score points, save high scores, and enjoy the game!">
     <meta name="keywords" content="Tetris, play Tetris, arcade game, online games, classic game, reaction, strategy, high score, score points">
     <meta name="author" content="Ivan Fulaitar">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <title>Game Tetris</title>
     <link
       rel="shortcut icon"
@@ -19,7 +20,7 @@
       <div class="info_game">
           <p >Score: <span id="current_count">0</span></p>
           <p >Lvl <span id="current_lvl">1</span></p>
-          <p><span id="pause_game">Pause</span></p>
+          <button type="button"><span id="pause_game">Pause</span></bиги>
         </div>
     </header>
     <main>
@@ -232,16 +233,32 @@
         </div>
         <div class="btn_mobile">
           <button class="arrow up">
-            <span class="button_arrow">⭡</span>
+            <span class="button_arrow" >
+              <svg width="50" height="50" class="svg_mobile">
+              <use href="./images/rotate.svg"></use>
+            </svg>
+          </span>
           </button>
           <button class="arrow left">
-            <span class="button_arrow">⭠</span>
+            <span class="button_arrow">
+              <svg width="50" height="50" class="svg_mobile">
+              <use href="./images/left.svg"></use>
+            </svg>
+            </span>
           </button>
           <button class="arrow down">
-            <span class="button_arrow">⭣</span>
+            <span class="button_arrow">
+              <svg width="50" height="50" class="svg_mobile">
+              <use href="./images/down.svg"></use>
+            </svg>
+            </span>
           </button>
           <button class="arrow right">
-            <span class="button_arrow">⭢</span>
+            <span class="button_arrow">
+              <svg width="50" height="50" class="svg_mobile">
+              <use href="./images/right.svg"></use>
+            </svg>
+            </span>
           </button>
         </div>
       </section>

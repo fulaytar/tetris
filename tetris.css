@@ -15,6 +15,7 @@ ul {
 }
 body {
   position: relative;
+  font-family: 'Roboto', sans-serif;
   background: linear-gradient(135deg, #1f1c2c, #928dab);
 }
 section {
@@ -62,6 +63,17 @@ header {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Тінь для елементів */
   transition: transform 0.2s, background 0.2s;
 }
+.info_game button {
+  padding: 5px 10px; /* Менші відступи для елементів */
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Тінь для елементів */
+  transition: transform 0.2s, background 0.2s;
+  color: #ecf0f1; /* Світлий текст */
+  font-size: 1rem; /* Зменшений розмір шрифту */
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
 
 .info_game p:hover {
   background: linear-gradient(
@@ -69,6 +81,14 @@ header {
     #16a085,
     #1abc9c
   ); /* Зміна фону при наведенні */
+}
+
+.svg_mobile{
+  fill: #000000;
+  stroke: #000000;
+  width: 50px;
+  height: 50px;
+  display: block;
 }
 /* ============STYLE TETRIS========== */
 .tetris {
@@ -127,8 +147,10 @@ button {
   border: none;
   border-radius: var(--button_radius);
   background: var(--button_outline_color);
-  padding: 0;
-  margin: 0;
+  user-select: none; /* Забороняє виділення тексту */
+  -webkit-user-select: none; /* Для підтримки в Safari */
+  -moz-user-select: none; /* Для підтримки в Firefox */
+  -ms-user-select: none; /* Для підтримки в Internet Explorer */
 }
 .pause_active {
   cursor: pointer;
@@ -224,6 +246,19 @@ button {
 .start_game:hover:before {
   transform: translateX(15em);
 }
+.start_game:active {
+  color: #5affaf;
+  background: linear-gradient(
+    to right,
+    rgba(27, 253, 156, 0.2) 1%,
+    transparent 40%,
+    transparent 60%,
+    rgba(27, 253, 156, 0.2) 100%
+  );
+  box-shadow: inset 0 0 15px rgba(27, 253, 156, 0.7),
+    0 0 9px 3px rgba(27, 253, 156, 0.3);
+  transform: scale(0.98); /* Легке зменшення для ефекту натискання */
+}
 
 .pause_active {
   color: #fff;
@@ -239,6 +274,19 @@ button {
   ); /* Градієнтний фон для тексту */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Тінь для блоку */
   animation: pulse 1.5s infinite; /* Анімація для тексту */
+}
+.pause_active:active,.pause_active:hover {
+  color: #5affaf;
+  background: linear-gradient(
+    to right,
+    rgba(27, 253, 156, 0.2) 1%,
+    transparent 40%,
+    transparent 60%,
+    rgba(27, 253, 156, 0.2) 100%
+  );
+  box-shadow: inset 0 0 15px rgba(27, 253, 156, 0.7),
+    0 0 9px 3px rgba(27, 253, 156, 0.3);
+  transform: scale(0.98); /* Легке зменшення для ефекту натискання */
 }
 /* ============GAME OVER CONTAINER ========= */
 .game-over-container {
@@ -284,7 +332,7 @@ button {
   background: linear-gradient(
     45deg,
     transparent,
-    rgba(255, 0, 0, 0.2),
+    rgba(255, 0, 0, 0.1),
     transparent
   );
   z-index: 1;
@@ -296,7 +344,7 @@ button {
   background: linear-gradient(
     -45deg,
     transparent,
-    rgba(0, 0, 255, 0.2),
+    rgba(0, 255, 0, 0.142),
     transparent
   );
 }
@@ -372,6 +420,20 @@ button {
 }
 .result_restart_game:hover:before {
   transform: translateX(15em);
+}
+.result_restart_game:active{
+   color: #5affaf;
+  background: linear-gradient(
+    to right,
+    rgba(27, 253, 156, 0.2) 1%,
+    transparent 40%,
+    transparent 60%,
+    rgba(27, 253, 156, 0.2) 100%
+  );
+  box-shadow: inset 0 0 15px rgba(27, 253, 156, 0.7),
+    0 0 9px 3px rgba(27, 253, 156, 0.3);
+  transform: scale(0.98); /* Легке зменшення для ефекту натискання */
+}
 }
 
 /* ============ALL MEDIA SCREENS========= */
